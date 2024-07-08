@@ -74,8 +74,8 @@ This is the root of the [DRPD Document](#drpd-document)
   "title": "Wo-chien route",
   "authors": ["Vicksin", "Javi", "RoulixStone"],
   "date": "2024-07-07",
-  "waves": [...],
-  "starting_mons": [...]
+  "waves": [],
+  "starting_mons": []
 }
 ```
 
@@ -108,7 +108,7 @@ This is the root of the [DRPD Document](#drpd-document)
   ],
   "shop": "Reload > Poke Ball",
   "biome": "Graveyard",
-  "pokemon_l": {...}
+  "pokemon_l": {}
 }
 ```
 
@@ -142,8 +142,8 @@ This is the root of the [DRPD Document](#drpd-document)
   "rarity": "Common",
   "capture": true,
   "level": 20,
-  "items": [...],
-  "ivs": {...},
+  "items": [],
+  "ivs": {}
 }
 ```
 
