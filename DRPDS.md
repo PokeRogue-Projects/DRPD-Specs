@@ -1,6 +1,6 @@
 # Daily Run Pathing Description Specifications
 
-## Version 0.1.1
+## Version 0.1.2
 The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [BCP 14](https://www.rfc-editor.org/info/bcp14) [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119) [RFC8174](https://datatracker.ietf.org/doc/html/rfc8174) when, and only when, they appear in all capitals, as shown here.
 
 This document is licensed under [The Gnu GPL License, version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -58,41 +58,41 @@ In the following description, if a field is not explicitly **OPTIONAL**, it MUST
 This is the root of the [DRPD Document](#drpd-document)
 
 #### Fixed Fields
-| Field Name    | Type                                 | Description                                                                                          |
-|---------------|--------------------------------------|------------------------------------------------------------------------------------------------------|
-| version       | `string`                             | This string MUST be the version number of the DRPD Specification that the DRPD document uses.        |
-| title         | `string`                             | **OPTIONAL** An additional title to discriminate from other run on the same day.                     |
-| authors       | \[`string`]                          | **OPTIONAL** The name of the pathers that worked on that run.                                        |
-| date          | `string`                             | The date of the daily run in the format YYYY-MM-DD.                                                  |
-| waves         | \[[Wave Object](#wave-object)]       | The waves of the daily run. This array MUST contain all 50 waves and be ordered by wave number       |
-| starting_mons | \[[Pokemon Object](#pokemon-object)] | The starting pokemons of the run. The pokemon send in the first wave MUST be the first in this list. |
+| Field Name | Type                                 | Description                                                                                          |
+|------------|--------------------------------------|------------------------------------------------------------------------------------------------------|
+| version    | `string`                             | This string MUST be the version number of the DRPD Specification that the DRPD document uses.        |
+| title      | `string`                             | **OPTIONAL** An additional title to discriminate from other run on the same day.                     |
+| authors    | \[`string`]                          | **OPTIONAL** The name of the pathers that worked on that run.                                        |
+| date       | `string`                             | The date of the daily run in the format YYYY-MM-DD.                                                  |
+| waves      | \[[Wave Object](#wave-object)]       | The waves of the daily run. This array MUST contain all 50 waves and be ordered by wave number       |
+| starters   | \[[Pokemon Object](#pokemon-object)] | The starting pokemons of the run. The pokemon send in the first wave MUST be the first in this list. |
 
 #### Example
 ```json
 {
-  "version": "0.1.0",
+  "version": "0.1.2",
   "title": "Wo-chien route",
   "authors": ["Vicksin", "Javi", "RoulixStone"],
   "date": "2024-07-07",
   "waves": [],
-  "starting_mons": []
+  "starters": []
 }
 ```
 
 ### Wave Object
 #### Fixed Fields
-| Field Name | Type                              | Description                                                                          |
-|------------|-----------------------------------|--------------------------------------------------------------------------------------|
-| id         | `integer`                         | The id of the run.                                                                   |
-| reload     | `boolean`                         | Set to `true` if the run must be reloaded at the start of this wave.                 |
-| type       | `string`                          | The type of the wave. The value MUST be "wild", "trainer" or "boss".                 |
-| double     | `boolean`                         | Whether the wave is a double battle or not                                           |
-| actions    | [`string`]                        | A list of all actions taken in order                                                 |
-| shop       | `boolean`\|`string`               | The name of the item to buy, `false` if there is no shop at this wave (boss or flee) |
-| biome      | `string`                          | Biome of the wave                                                                    |
-| trainer    | [Trainer Object]()                | **OPTIONAL** This field MUST be completed if the wave is a "trainer" battle          |
-| pokemon_l  | [Pokemon Object](#pokemon-object) | **OPTIONAL** This field MUST be completed if the wave is "wild" or "boss" battle     |
-| pokemon_r  | [Pokemon Object](#pokemon-object) | **OPTIONAL** This field MUST be completed if the wave is a double "wild" battle      |
+| Field Name    | Type                              | Description                                                                          |
+|---------------|-----------------------------------|--------------------------------------------------------------------------------------|
+| id            | `integer`                         | The id of the run.                                                                   |
+| reload        | `boolean`                         | Set to `true` if the run must be reloaded at the start of this wave.                 |
+| type          | `string`                          | The type of the wave. The value MUST be "wild", "trainer" or "boss".                 |
+| double        | `boolean`                         | Whether the wave is a double battle or not                                           |
+| actions       | [`string`]                        | A list of all actions taken in order                                                 |
+| shop          | `boolean`\|`string`               | The name of the item to buy, `false` if there is no shop at this wave (boss or flee) |
+| biome         | `string`                          | Biome of the wave                                                                    |
+| trainer       | [Trainer Object]()                | **OPTIONAL** This field MUST be completed if the wave is a "trainer" battle          |
+| pokemon_left  | [Pokemon Object](#pokemon-object) | **OPTIONAL** This field MUST be completed if the wave is "wild" or "boss" battle     |
+| pokemon_right | [Pokemon Object](#pokemon-object) | **OPTIONAL** This field MUST be completed if the wave is a double "wild" battle      |
 
 #### Example
 ```json
@@ -108,26 +108,26 @@ This is the root of the [DRPD Document](#drpd-document)
   ],
   "shop": "Reload > Poke Ball",
   "biome": "Graveyard",
-  "pokemon_l": {}
+  "pokemon_left": {}
 }
 ```
 
 ### Pokemon Object
 #### Fixed Fields
-| Field Name      | Type                            | Description                                                |
-|-----------------|---------------------------------|------------------------------------------------------------|
-| id              | `integer`                       | Pokedex ID of the pokemon                                  |
-| name            | `string`                        | Species of the pokemon                                     |
-| ability         | `string`                        | Ability of the pokemon                                     |
-| isHiddenAbility | `boolean`                       | `true` if the ability of the pokemon is it's hidden ability |
-| passive         | `string`                        | Passive of the pokemon                                     |
-| nature          | `string`                        | Nature of the pokemon                                      |
-| gender          | `string`                        | Gender of the pokemon                                      |
-| rarity          | `string`                        | Biome rarity of the pokemon                                |
-| capture         | `boolean`                       | `true` if the pokemon is captured                          |
-| level           | `integer`                       | Level of the pokemon                                       |
-| items           | \[[Item Object](#item-object)]  | List of the objects held by the pokemon                    |
-| ivs             | [Iv Object](#iv-object)         | IVs of the pokemon                                         |
+| Field Name      | Type                           | Description                                                 |
+|-----------------|--------------------------------|-------------------------------------------------------------|
+| id              | `integer`                      | Pokedex ID of the pokemon                                   |
+| name            | `string`                       | Species of the pokemon                                      |
+| ability         | `string`                       | Ability of the pokemon                                      |
+| isHiddenAbility | `boolean`                      | `true` if the ability of the pokemon is it's hidden ability |
+| passive         | `string`                       | Passive of the pokemon                                      |
+| nature          | `string`                       | Nature of the pokemon                                       |
+| gender          | `string`                       | Gender of the pokemon                                       |
+| rarity          | `string`                       | Biome rarity of the pokemon                                 |
+| capture         | `boolean`                      | `true` if the pokemon is captured                           |
+| level           | `integer`                      | Level of the pokemon                                        |
+| items           | \[[Item Object](#item-object)] | List of the objects held by the pokemon                     |
+| ivs             | [Iv Object](#iv-object)        | IVs of the pokemon                                          |
 
 #### Example
 ```json
@@ -153,8 +153,8 @@ This is the root of the [DRPD Document](#drpd-document)
 | hp         | `integer` | HP IV of the pokemon (between 0 and 31)          |
 | atk        | `integer` | Attack IV of the pokemon (between 0 and 31)      |
 | def        | `integer` | Defence IV of the pokemon (between 0 and 31)     |
-| spa        | `integer` | Spe.Attack IV of the pokemon (between 0 and 31)  |
-| spd        | `integer` | Spe.Defence IV of the pokemon (between 0 and 31) |
+| spatk      | `integer` | Spe.Attack IV of the pokemon (between 0 and 31)  |
+| spdef      | `integer` | Spe.Defence IV of the pokemon (between 0 and 31) |
 | spe        | `integer` | Speed IV of the pokemon (between 0 and 31)       |
 
 #### Example
@@ -163,8 +163,8 @@ This is the root of the [DRPD Document](#drpd-document)
   "hp": 15,
   "atk": 10,
   "def": 16,
-  "spa": 2,
-  "spd": 30,
+  "spatk": 2,
+  "spdef": 30,
   "spe": 25
 }
 ```
@@ -192,14 +192,14 @@ This is the root of the [DRPD Document](#drpd-document)
 |------------|-----------|----------------------|
 | id         | `integer` | ID of the item       |
 | name       | `string`  | Name of the item     |
-| qtt        | `integer` | Quantity of the item |
+| quantity   | `integer` | Quantity of the item |
 
 #### Example
 ```json
 {
   "id": 5,
   "name": "Sitrus Berry",
-  "qtt": 2
+  "quantity": 2
 }
 ```
 
@@ -223,7 +223,7 @@ This is the root of the [DRPD Document](#drpd-document)
         ],
         "shop": "Reload > Poke Ball",
         "biome": "Graveyard",
-        "pokemon_l":       {
+        "pokemon_left": {
           "id": 708,
           "name": "phantump",
           "ability": "Frisk",
@@ -239,8 +239,8 @@ This is the root of the [DRPD Document](#drpd-document)
             "hp": 15,
             "atk": 10,
             "def": 16,
-            "spa": 2,
-            "spd": 30,
+            "spatk": 2,
+            "spdef": 30,
             "spe": 25
           }
         }
@@ -257,7 +257,7 @@ This is the root of the [DRPD Document](#drpd-document)
         ],
         "shop": "Reload > Poke Ball",
         "biome": "Graveyard",
-        "pokemon_l":       {
+        "pokemon_left": {
           "id": 708,
           "name": "phantump",
           "ability": "Frisk",
@@ -273,12 +273,12 @@ This is the root of the [DRPD Document](#drpd-document)
             "hp": 15,
             "atk": 10,
             "def": 16,
-            "spa": 2,
-            "spd": 30,
+            "spatk": 2,
+            "spdef": 30,
             "spe": 25
           }
         },
-        "pokemon_r":       {
+        "pokemon_right": {
           "id": 708,
           "name": "phantump",
           "ability": "Frisk",
@@ -294,8 +294,8 @@ This is the root of the [DRPD Document](#drpd-document)
             "hp": 15,
             "atk": 10,
             "def": 16,
-            "spa": 2,
-            "spd": 30,
+            "spatk": 2,
+            "spdef": 30,
             "spe": 25
           }
         }
@@ -330,7 +330,7 @@ This is the root of the [DRPD Document](#drpd-document)
         ],
         "shop": "Reload > Poke Ball",
         "biome": "Graveyard",
-        "pokemon_l":       {
+        "pokemon_left": {
           "id": 708,
           "name": "phantump",
           "ability": "Frisk",
@@ -345,21 +345,21 @@ This is the root of the [DRPD Document](#drpd-document)
             {
               "id": 52,
               "name": "Dragon claw",
-              "qtt": 1
+              "quantity": 1
             }
           ],
           "ivs": {
             "hp": 15,
             "atk": 10,
             "def": 16,
-            "spa": 2,
-            "spd": 30,
+            "spatk": 2,
+            "spdef": 30,
             "spe": 25
           }
         }
       }
     ],
-    "starting_mons": [
+    "starters": [
       {
         "id": 708,
         "name": "phantump",
@@ -375,20 +375,20 @@ This is the root of the [DRPD Document](#drpd-document)
           {
             "id": 5,
             "name": "Sitrus Berry",
-            "qtt": 2
+            "quantity": 2
           },
           {
             "id": 6,
             "name": "Enigma Berry",
-            "qtt": 1
+            "quantity": 1
           }
         ],
         "ivs": {
           "hp": 15,
           "atk": 10,
           "def": 16,
-          "spa": 2,
-          "spd": 30,
+          "spatk": 2,
+          "spdef": 30,
           "spe": 25
         }
       },
@@ -407,20 +407,20 @@ This is the root of the [DRPD Document](#drpd-document)
           {
             "id": 5,
             "name": "Sitrus Berry",
-            "qtt": 2
+            "quantity": 2
           },
           {
             "id": 6,
             "name": "Enigma Berry",
-            "qtt": 1
+            "quantity": 1
           }
         ],
         "ivs": {
           "hp": 15,
           "atk": 10,
           "def": 16,
-          "spa": 2,
-          "spd": 30,
+          "spatk": 2,
+          "spdef": 30,
           "spe": 25
         }
       },
@@ -439,20 +439,20 @@ This is the root of the [DRPD Document](#drpd-document)
           {
             "id": 5,
             "name": "Sitrus Berry",
-            "qtt": 2
+            "quantity": 2
           },
           {
             "id": 6,
             "name": "Enigma Berry",
-            "qtt": 1
+            "quantity": 1
           }
         ],
         "ivs": {
           "hp": 15,
           "atk": 10,
           "def": 16,
-          "spa": 2,
-          "spd": 30,
+          "spatk": 2,
+          "spdef": 30,
           "spe": 25
         }
       }
