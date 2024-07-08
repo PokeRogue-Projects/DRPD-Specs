@@ -90,7 +90,7 @@ This is the root of the [DRPD Document](#drpd-document)
 | actions       | [`string`]                        | A list of all actions taken in order                                                 |
 | shop          | `boolean`\|`string`               | The name of the item to buy, `false` if there is no shop at this wave (boss or flee) |
 | biome         | `string`                          | Biome of the wave                                                                    |
-| trainer       | [Trainer Object]()                | **OPTIONAL** This field MUST be completed if the wave is a "trainer" battle          |
+| trainer       | [Trainer Object](#trainer-object)  | **OPTIONAL** This field MUST be completed if the wave is a "trainer" battle          |
 | pokemon_left  | [Pokemon Object](#pokemon-object) | **OPTIONAL** This field MUST be completed if the wave is "wild" or "boss" battle     |
 | pokemon_right | [Pokemon Object](#pokemon-object) | **OPTIONAL** This field MUST be completed if the wave is a double "wild" battle      |
 
