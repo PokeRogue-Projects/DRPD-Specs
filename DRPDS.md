@@ -16,11 +16,11 @@ A self-contained resource which describes a Daily Run Path. The DRPD document MU
 
 ## Specification
 ### Version
-The Daily Run Pathing Description Specifications is versioned using a major.minor.patch versioning scheme. The major.minor portion of the version string (for example 3.1) SHALL designate the DRPDS feature set. .patch versions address errors in, or provide clarifications to, this document, not the feature set. Tooling which supports DRPDS 0.1 SHOULD be compatible with all DRPDS 0.1.* versions. The patch version SHOULD NOT be considered by tooling, making no distinction between 0.1.0 and 0.1.1 for example.
+The Daily Run Pathing Description Specifications is versioned using a major.minor.patch versioning scheme. The major.minor portion of the version string (for example 3.1) SHALL designate the DRPDS feature set. .patch versions address errors in, or provide clarifications to, this document, not the feature set. Tooling which supports DRPDS `0.1` SHOULD be compatible with all DRPDS `0.1.*` versions. The patch version SHOULD NOT be considered by tooling, making no distinction between `0.1.0` and `0.1.1` for example.
 
 Occasionally, non-backwards compatible changes may be made in minor versions of the DRPDS where impact is believed to be low relative to the benefit provided.
 
-An DRPD document compatible with DRPDS 0.*.* contains a required version field which designates the version of the DRPDS that it uses.
+An DRPD document compatible with DRPDS `0.*.*` contains a required version field which designates the version of the DRPDS that it uses.
 
 ### Format
 A Daily Run Pathing document that conforms to the Daily Run Pathing Description Specifications is itself a JSON object, which may be represented either in JSON or YAML format.
