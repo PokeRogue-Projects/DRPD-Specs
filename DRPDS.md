@@ -1,6 +1,6 @@
 # Daily Run Pathing Description Specifications
 
-## Version 0.1.0
+## Version 0.1.1
 The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [BCP 14](https://www.rfc-editor.org/info/bcp14) [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119) [RFC8174](https://datatracker.ietf.org/doc/html/rfc8174) when, and only when, they appear in all capitals, as shown here.
 
 This document is licensed under [The Gnu GPL License, version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -114,19 +114,20 @@ This is the root of the [DRPD Document](#drpd-document)
 
 ### Pokemon Object
 #### Fixed Fields
-| Field Name      | Type                           | Description                                                 |
-|-----------------|--------------------------------|-------------------------------------------------------------|
-| id              | `integer`                      | Pokedex ID of the pokemon                                   |
-| name            | `string`                       | Species of the pokemon                                      |
-| ability         | `string`                       | Ability of the pokemon                                      |
-| isHiddenAbility | `boolean`                      | `true` if the ability of the pokemon is it's hidden ability |
-| passive         | `string`                       | Passive of the pokemon                                      |
-| nature          | `string`                       | Nature of the pokemon                                       |
-| gender          | `string`                       | Gender of the pokemon                                       |
-| capture         | `boolean`                      | `true` if the pokemon is captured                           |
-| level           | `integer`                      | Level of the pokemon                                        |
-| items           | \[[Item Object](#item-object)] | List of the objects held by the pokemon                     |
-| ivs             | [Iv Object](#iv-object)        | IVs of the pokemon                                          |
+| Field Name      | Type                            | Description                                                |
+|-----------------|---------------------------------|------------------------------------------------------------|
+| id              | `integer`                       | Pokedex ID of the pokemon                                  |
+| name            | `string`                        | Species of the pokemon                                     |
+| ability         | `string`                        | Ability of the pokemon                                     |
+| isHiddenAbility | `boolean`                       | `true` if the ability of the pokemon is it's hidden ability |
+| passive         | `string`                        | Passive of the pokemon                                     |
+| nature          | `string`                        | Nature of the pokemon                                      |
+| gender          | `string`                        | Gender of the pokemon                                      |
+| rarity          | `string`                        | Biome rarity of the pokemon                                |
+| capture         | `boolean`                       | `true` if the pokemon is captured                          |
+| level           | `integer`                       | Level of the pokemon                                       |
+| items           | \[[Item Object](#item-object)]  | List of the objects held by the pokemon                    |
+| ivs             | [Iv Object](#iv-object)         | IVs of the pokemon                                         |
 
 #### Example
 ```json
@@ -138,6 +139,7 @@ This is the root of the [DRPD Document](#drpd-document)
   "passive": "Ripen",
   "nature": "Careful",
   "gender": "female",
+  "rarity": "Common",
   "capture": true,
   "level": 20,
   "items": [...],
@@ -229,6 +231,7 @@ This is the root of the [DRPD Document](#drpd-document)
           "passive": "Ripen",
           "nature": "Careful",
           "gender": "female",
+          "rarity": "Common",
           "capture": true,
           "level": 20,
           "items": [],
@@ -262,6 +265,7 @@ This is the root of the [DRPD Document](#drpd-document)
           "passive": "Ripen",
           "nature": "Careful",
           "gender": "female",
+          "rarity": "Common",
           "capture": true,
           "level": 20,
           "items": [],
@@ -282,6 +286,7 @@ This is the root of the [DRPD Document](#drpd-document)
           "passive": "Ripen",
           "nature": "Careful",
           "gender": "female",
+          "rarity": "Common",
           "capture": true,
           "level": 20,
           "items": [],
@@ -333,6 +338,7 @@ This is the root of the [DRPD Document](#drpd-document)
           "passive": "Ripen",
           "nature": "Careful",
           "gender": "female",
+          "rarity": "Common",
           "capture": true,
           "level": 20,
           "items": [
@@ -362,6 +368,7 @@ This is the root of the [DRPD Document](#drpd-document)
         "passive": "Ripen",
         "nature": "Careful",
         "gender": "female",
+        "rarity": "Common",
         "capture": true,
         "level": 20,
         "items": [
@@ -393,6 +400,7 @@ This is the root of the [DRPD Document](#drpd-document)
         "passive": "Ripen",
         "nature": "Careful",
         "gender": "female",
+        "rarity": "Common",
         "capture": true,
         "level": 20,
         "items": [
@@ -424,6 +432,7 @@ This is the root of the [DRPD Document](#drpd-document)
         "passive": "Ripen",
         "nature": "Careful",
         "gender": "female",
+        "rarity": "Common",
         "capture": true,
         "level": 20,
         "items": [
