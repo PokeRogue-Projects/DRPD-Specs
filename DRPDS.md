@@ -1,6 +1,6 @@
 # Daily Run Pathing Description Specifications
 
-## Version 0.1.3
+## Version 1.0.0
 
 The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT
 RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described
@@ -28,15 +28,15 @@ waves field and an author field. A DRPD document uses and conforms to the Daily 
 ### Version
 
 The Daily Run Pathing Description Specifications is versioned using a major.minor.patch versioning scheme. The
-major.minor portion of the version string (for example 3.1) SHALL designate the DRPDS feature set. .patch versions
-address errors in, or provide clarifications to, this document, not the feature set. Tooling which supports DRPDS `0.1`
-SHOULD be compatible with all DRPDS `0.1.*` versions. The patch version SHOULD NOT be considered by tooling, making no
-distinction between `0.1.0` and `0.1.1` for example.
+major.minor portion of the version string (for example 1.0) SHALL designate the DRPDS feature set. .patch versions
+address errors in, or provide clarifications to, this document, not the feature set. Tooling which supports DRPDS `1.0`
+SHOULD be compatible with all DRPDS `1.0.*` versions. The patch version SHOULD NOT be considered by tooling, making no
+distinction between `1.0.0` and `1.0.1` for example.
 
 Occasionally, non-backwards compatible changes may be made in minor versions of the DRPDS where impact is believed to be
 low relative to the benefit provided.
 
-An DRPD document compatible with DRPDS `0.*.*` contains a required version field which designates the version of the
+An DRPD document compatible with DRPDS `1.*.*` contains a required version field which designates the version of the
 DRPDS that it uses.
 
 ### Format
@@ -71,7 +71,7 @@ some additional constraints:
 A DRPD document MUST be made up of a single document.
 
 It is RECOMMENDED that the root DRPD document be named according to the date of the daily run and an optional keyword in
-the format YYYY-MM-DD_keyword : 2024-07-07_uxie.json or 2024-07-07_stakataka.yaml.
+the format YYYY-MM-DD_keyword : 2024-07-07_route.json or 2024-07-07_route.yaml.
 
 ### Data Types
 
@@ -101,7 +101,7 @@ This is the root of the [DRPD Document](#drpd-document)
 
 ```json
 {
-  "version": "0.1.2",
+  "version": "1.0.0",
   "title": "Wo-chien route",
   "authors": [
     "Vicksin",
@@ -118,17 +118,17 @@ This is the root of the [DRPD Document](#drpd-document)
 
 #### Fixed Fields
 
-| Field Name | Type                                 | Description                                                                          |
-|------------|--------------------------------------|--------------------------------------------------------------------------------------|
-| id         | `integer`                            | The id of the run.                                                                   |
-| reload     | `boolean`                            | Set to `true` if the run must be reloaded at the start of this wave.                 |
-| type       | `string`                             | The type of the wave. The value MUST be "wild", "trainer" or "boss".                 |
-| double     | `boolean`                            | Whether the wave is a double battle or not                                           |
-| actions    | [`string`]                           | A list of all actions taken in order                                                 |
-| shop       | `boolean`\|`string`                  | The name of the item to buy, `false` if there is no shop at this wave (boss or flee) |
-| biome      | `string`                             | Biome of the wave                                                                    |
-| trainer    | [Trainer Object](#trainer-object)    | **OPTIONAL** This field MUST be completed if the wave is a "trainer" battle          |
-| pokemon    | \[[Pokemon Object](#pokemon-object)] | **OPTIONAL** This field MUST be completed if the wave is "wild" or "boss" battle     |
+| Field Name | Type                                 | Description                                                                               |
+|------------|--------------------------------------|-------------------------------------------------------------------------------------------|
+| id         | `integer`                            | The id of the run.                                                                        |
+| reload     | `boolean`                            | Set to `true` if the run must be reloaded at the start of this wave.                      |
+| type       | `string`                             | The type of the wave. The value MUST be "wild", "trainer" or "boss".                      |
+| double     | `boolean`                            | Whether the wave is a double battle or not                                                |
+| actions    | [`string`]                           | A list of all actions taken in order                                                      |
+| shop       | `string`                             | The name of the item to buy, empty string if there is no shop at this wave (boss or flee) |
+| biome      | `string`                             | Biome of the wave                                                                         |
+| trainer    | [Trainer Object](#trainer-object)    | **OPTIONAL** This field MUST be completed if the wave is a "trainer" battle               |
+| pokemon    | \[[Pokemon Object](#pokemon-object)] | **OPTIONAL** This field MUST be completed if the wave is "wild" or "boss" battle          |
 
 #### Example
 
@@ -138,7 +138,7 @@ This is the root of the [DRPD Document](#drpd-document)
   "reload": false,
   "type": "wild",
   "double": false,
-  "action": [
+  "actions": [
     "Pokeball",
     "Transfer|Basculin All > Azumarill",
     "Transfer|Diggersby All > Azumarill"
@@ -153,20 +153,20 @@ This is the root of the [DRPD Document](#drpd-document)
 
 #### Fixed Fields
 
-| Field Name      | Type                           | Description                                                 |
-|-----------------|--------------------------------|-------------------------------------------------------------|
-| id              | `integer`                      | Pokedex ID of the pokemon                                   |
-| name            | `string`                       | Species of the pokemon                                      |
-| ability         | `string`                       | Ability of the pokemon                                      |
-| isHiddenAbility | `boolean`                      | `true` if the ability of the pokemon is it's hidden ability |
-| passive         | `string`                       | Passive of the pokemon                                      |
-| nature          | `string`                       | Nature of the pokemon                                       |
-| gender          | `string`                       | Gender of the pokemon                                       |
-| rarity          | `string`                       | Biome rarity of the pokemon                                 |
-| captured        | `boolean`                      | `true` if the pokemon is captured                           |
-| level           | `integer`                      | Level of the pokemon                                        |
-| items           | \[[Item Object](#item-object)] | List of the objects held by the pokemon                     |
-| ivs             | [Iv Object](#iv-object)        | IVs of the pokemon                                          |
+| Field Name      | Type                            | Description                                                 |
+|-----------------|---------------------------------|-------------------------------------------------------------|
+| id              | `integer`                       | Pokedex ID of the pokemon                                   |
+| name            | `string`                        | Species of the pokemon                                      |
+| ability         | `string`                        | Ability of the pokemon                                      |
+| isHiddenAbility | `boolean`                       | `true` if the ability of the pokemon is it's hidden ability |
+| passive         | `string`                        | Passive of the pokemon                                      |
+| nature          | [Nature Object](#nature-object) | Nature of the pokemon                                       |
+| gender          | `string`                        | Gender of the pokemon                                       |
+| rarity          | `string`                        | Biome rarity of the pokemon                                 |
+| captured        | `boolean`                       | `true` if the pokemon is captured                           |
+| level           | `integer`                       | Level of the pokemon                                        |
+| items           | \[[Item Object](#item-object)]  | List of the objects held by the pokemon                     |
+| ivs             | [Iv Object](#iv-object)         | IVs of the pokemon                                          |
 
 #### Example
 
@@ -177,7 +177,7 @@ This is the root of the [DRPD Document](#drpd-document)
   "ability": "Frisk",
   "isHiddenAbility": false,
   "passive": "Ripen",
-  "nature": "Careful",
+  "nature": {},
   "gender": "female",
   "rarity": "Common",
   "captured": true,
@@ -187,7 +187,28 @@ This is the root of the [DRPD Document](#drpd-document)
 }
 ```
 
+### Nature Object
+
+#### Fixed Fields
+
+| Field Name | Type     | Description                                                  |
+|------------|----------|--------------------------------------------------------------|
+| name       | `string` | Name of the nature                                           |
+| increased  | `string` | Name of the stat increased, empty string for neutral natures |
+| decreased  | `string` | Name of the stat decreased, empty string for neutral natures |
+
+#### Example
+```json
+{
+  "name": "adamant",
+  "increased": "atk",
+  "decreased": "spatk"
+}
+```
+
 ### Iv Object
+
+#### Fixed Fields
 
 | Field Name | Type      | Description                                      |
 |------------|-----------|--------------------------------------------------|
@@ -269,7 +290,7 @@ This is the root of the [DRPD Document](#drpd-document)
       "reload": true,
       "type": "wild",
       "double": false,
-      "action": [
+      "actions": [
         "Pokeball",
         "Transfer|Basculin All > Azumarill",
         "Transfer|Diggersby All > Azumarill"
@@ -283,7 +304,11 @@ This is the root of the [DRPD Document](#drpd-document)
           "ability": "Frisk",
           "isHiddenAbility": false,
           "passive": "Ripen",
-          "nature": "Careful",
+          "nature": {
+            "name": "adamant",
+            "increased": "atk",
+            "decreased": "spatk"
+          },
           "gender": "female",
           "rarity": "Common",
           "captured": true,
@@ -305,7 +330,7 @@ This is the root of the [DRPD Document](#drpd-document)
       "reload": false,
       "type": "wild",
       "double": true,
-      "action": [
+      "actions": [
         "Pokeball",
         "Transfer|Basculin All > Azumarill",
         "Transfer|Diggersby All > Azumarill"
@@ -319,7 +344,11 @@ This is the root of the [DRPD Document](#drpd-document)
           "ability": "Frisk",
           "isHiddenAbility": false,
           "passive": "Ripen",
-          "nature": "Careful",
+          "nature": {
+            "name": "adamant",
+            "increased": "atk",
+            "decreased": "spatk"
+          },
           "gender": "female",
           "rarity": "Common",
           "captured": true,
@@ -340,7 +369,11 @@ This is the root of the [DRPD Document](#drpd-document)
           "ability": "Frisk",
           "isHiddenAbility": false,
           "passive": "Ripen",
-          "nature": "Careful",
+          "nature": {
+            "name": "adamant",
+            "increased": "atk",
+            "decreased": "spatk"
+          },
           "gender": "female",
           "rarity": "Common",
           "captured": false,
@@ -362,7 +395,7 @@ This is the root of the [DRPD Document](#drpd-document)
       "reload": false,
       "type": "trainer",
       "double": false,
-      "action": [
+      "actions": [
         "Pokeball",
         "Transfer|Basculin All > Azumarill",
         "Transfer|Diggersby All > Azumarill"
@@ -394,7 +427,11 @@ This is the root of the [DRPD Document](#drpd-document)
           "ability": "Frisk",
           "isHiddenAbility": false,
           "passive": "Ripen",
-          "nature": "Careful",
+          "nature": {
+            "name": "adamant",
+            "increased": "atk",
+            "decreased": "spatk"
+          },
           "gender": "female",
           "rarity": "Common",
           "capture": false,
@@ -422,12 +459,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "reload": false,
       "type": "trainer",
       "double": false,
-      "action": [
+      "actions": [
         "Pokeball",
         "Transfer|Basculin All > Azumarill",
         "Transfer|Diggersby All > Azumarill"
       ],
-      "shop": false,
+      "shop": "",
       "biome": "Graveyard",
       "trainer": {
         "id": 54,
@@ -443,7 +480,11 @@ This is the root of the [DRPD Document](#drpd-document)
       "ability": "Frisk",
       "isHiddenAbility": false,
       "passive": "Ripen",
-      "nature": "Careful",
+      "nature": {
+        "name": "serious",
+        "increased": "",
+        "decreased": ""
+      },
       "gender": "female",
       "rarity": "Common",
       "captured": true,
@@ -475,7 +516,11 @@ This is the root of the [DRPD Document](#drpd-document)
       "ability": "Frisk",
       "isHiddenAbility": false,
       "passive": "Ripen",
-      "nature": "Careful",
+      "nature": {
+        "name": "serious",
+        "increased": "",
+        "decreased": ""
+      },
       "gender": "female",
       "rarity": "Common",
       "captured": true,
@@ -507,7 +552,11 @@ This is the root of the [DRPD Document](#drpd-document)
       "ability": "Frisk",
       "isHiddenAbility": false,
       "passive": "Ripen",
-      "nature": "Careful",
+      "nature": {
+        "name": "serious",
+        "increased": "",
+        "decreased": ""
+      },
       "gender": "female",
       "rarity": "Common",
       "captured": true,
