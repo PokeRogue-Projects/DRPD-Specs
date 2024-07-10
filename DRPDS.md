@@ -145,7 +145,7 @@ This is the root of the [DRPD Document](#drpd-document)
   ],
   "shop": "Reload > Poke Ball",
   "biome": "Graveyard",
-  "pokemon_left": []
+  "pokemon": []
 }
 ```
 
@@ -434,7 +434,7 @@ This is the root of the [DRPD Document](#drpd-document)
           },
           "gender": "female",
           "rarity": "Common",
-          "capture": false,
+          "captured": false,
           "level": 20,
           "items": [
             {
