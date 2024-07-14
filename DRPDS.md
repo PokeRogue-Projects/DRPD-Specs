@@ -1,6 +1,6 @@
 # Daily Run Pathing Description Specifications
 
-## Version 1.0.0
+## Version 1.1.0
 
 The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT
 RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described
@@ -30,13 +30,13 @@ waves field and an author field. A DRPD document uses and conforms to the Daily 
 The Daily Run Pathing Description Specifications is versioned using a major.minor.patch versioning scheme. The
 major.minor portion of the version string (for example 1.0) SHALL designate the DRPDS feature set. .patch versions
 address errors in, or provide clarifications to, this document, not the feature set. Tooling which supports DRPDS `1.0`
-SHOULD be compatible with all DRPDS `1.0.*` versions. The patch version SHOULD NOT be considered by tooling, making no
-distinction between `1.0.0` and `1.0.1` for example.
+SHOULD be compatible with all DRPDS `1.1.*` versions. The patch version SHOULD NOT be considered by tooling, making no
+distinction between `1.1.0` and `1.1.1` for example.
 
 Occasionally, non-backwards compatible changes may be made in minor versions of the DRPDS where impact is believed to be
 low relative to the benefit provided.
 
-An DRPD document compatible with DRPDS `1.*.*` contains a required version field which designates the version of the
+An DRPD document compatible with DRPDS `1.1.*` contains a required version field which designates the version of the
 DRPDS that it uses.
 
 ### Format
@@ -91,6 +91,8 @@ This is the root of the [DRPD Document](#drpd-document)
 | Field Name | Type                                 | Description                                                                                          |
 |------------|--------------------------------------|------------------------------------------------------------------------------------------------------|
 | version    | `string`                             | This string MUST be the version number of the DRPD Specification that the DRPD document uses.        |
+| uuid       | `string`                             | **OPTIONAL** Unique identifier of your run                                                           |
+| label      | `string`                             | label for your run. Only alphanumerical, dash and underscore allowed(-_a-zA-Z0-9)                    |
 | title      | `string`                             | **OPTIONAL** An additional title to discriminate from other run on the same day.                     |
 | authors    | \[`string`]                          | **OPTIONAL** The name of the pathers that worked on that run.                                        |
 | date       | `string`                             | The date of the daily run in the format YYYY-MM-DD.                                                  |
@@ -101,12 +103,14 @@ This is the root of the [DRPD Document](#drpd-document)
 
 ```json
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "uuid": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  "label": "wo-chien",
   "title": "Wo-chien route",
   "authors": [
-    "Vicksin",
-    "Javi",
-    "RoulixStone"
+    "Myallaen",
+    "Scar13t",
+    "Redstonewolf"
   ],
   "date": "2024-07-07",
   "waves": [],
@@ -258,7 +262,7 @@ This is the root of the [DRPD Document](#drpd-document)
 
 | Field Name | Type      | Description          |
 |------------|-----------|----------------------|
-| id         | `integer` | ID of the item       |
+| id         | `string`  | ID of the item       |
 | name       | `string`  | Name of the item     |
 | quantity   | `integer` | Quantity of the item |
 
@@ -266,7 +270,7 @@ This is the root of the [DRPD Document](#drpd-document)
 
 ```json
 {
-  "id": 5,
+  "id": "Berry:SITRUS",
   "name": "Sitrus Berry",
   "quantity": 2
 }
@@ -277,11 +281,13 @@ This is the root of the [DRPD Document](#drpd-document)
 ```json
 {
   "version": "0.1.0",
+  "uuid": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  "label": "wo-chien",
   "title": "Wo-chien route",
   "authors": [
-    "Vicksin",
-    "Javi",
-    "RoulixStone"
+    "Myallaen",
+    "Scar13t",
+    "Redstonewolf"
   ],
   "date": "2024-07-07",
   "waves": [
@@ -438,7 +444,7 @@ This is the root of the [DRPD Document](#drpd-document)
           "level": 20,
           "items": [
             {
-              "id": 52,
+              "id": "Dragon_claw",
               "name": "Dragon claw",
               "quantity": 1
             }
@@ -491,12 +497,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "level": 20,
       "items": [
         {
-          "id": 5,
+          "id": "Berry:SITRUS",
           "name": "Sitrus Berry",
           "quantity": 2
         },
         {
-          "id": 6,
+          "id": "Berry:ENIGMA",
           "name": "Enigma Berry",
           "quantity": 1
         }
@@ -527,12 +533,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "level": 20,
       "items": [
         {
-          "id": 5,
+          "id": "Berry:SITRUS",
           "name": "Sitrus Berry",
           "quantity": 2
         },
         {
-          "id": 6,
+          "id": "Berry:ENIGMA",
           "name": "Enigma Berry",
           "quantity": 1
         }
@@ -563,12 +569,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "level": 20,
       "items": [
         {
-          "id": 5,
+          "id": "Berry:SITRUS",
           "name": "Sitrus Berry",
           "quantity": 2
         },
         {
-          "id": 6,
+          "id": "Berry:ENIGMA",
           "name": "Enigma Berry",
           "quantity": 1
         }
