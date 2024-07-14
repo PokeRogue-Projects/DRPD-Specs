@@ -262,7 +262,7 @@ This is the root of the [DRPD Document](#drpd-document)
 
 | Field Name | Type      | Description          |
 |------------|-----------|----------------------|
-| id         | `integer` | ID of the item       |
+| id         | `string`  | ID of the item       |
 | name       | `string`  | Name of the item     |
 | quantity   | `integer` | Quantity of the item |
 
@@ -270,7 +270,7 @@ This is the root of the [DRPD Document](#drpd-document)
 
 ```json
 {
-  "id": 5,
+  "id": "Berry:SITRUS",
   "name": "Sitrus Berry",
   "quantity": 2
 }
@@ -444,7 +444,7 @@ This is the root of the [DRPD Document](#drpd-document)
           "level": 20,
           "items": [
             {
-              "id": 52,
+              "id": "Dragon_claw",
               "name": "Dragon claw",
               "quantity": 1
             }
@@ -497,12 +497,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "level": 20,
       "items": [
         {
-          "id": 5,
+          "id": "Berry:SITRUS",
           "name": "Sitrus Berry",
           "quantity": 2
         },
         {
-          "id": 6,
+          "id": "Berry:ENIGMA",
           "name": "Enigma Berry",
           "quantity": 1
         }
@@ -533,12 +533,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "level": 20,
       "items": [
         {
-          "id": 5,
+          "id": "Berry:SITRUS",
           "name": "Sitrus Berry",
           "quantity": 2
         },
         {
-          "id": 6,
+          "id": "Berry:ENIGMA",
           "name": "Enigma Berry",
           "quantity": 1
         }
@@ -569,12 +569,12 @@ This is the root of the [DRPD Document](#drpd-document)
       "level": 20,
       "items": [
         {
-          "id": 5,
+          "id": "Berry:SITRUS",
           "name": "Sitrus Berry",
           "quantity": 2
         },
         {
-          "id": 6,
+          "id": "Berry:ENIGMA",
           "name": "Enigma Berry",
           "quantity": 1
         }
